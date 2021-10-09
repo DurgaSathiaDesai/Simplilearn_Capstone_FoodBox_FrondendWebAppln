@@ -1,0 +1,40 @@
+<div class="table-responsive-sm divstyle">
+    <br/>
+    <h3 class= "textstyle">Add/Remove a Cuisine</h3>
+    <br/>
+    <form class="user-login-sm" [formGroup]="cuisineForm" (ngSubmit)="onAdd()">
+        <div class="row">
+          <div class="col-sm-6 roundedTextBox mb-3 textboxclass">
+            <input type="text" class="form-control textbox "  id="cuisinename" formControlName="cuisinename" placeholder="Enter cuisinename">
+            <div *ngIf="submitted || formControl.cuisinename.touched || formControl.cuisinename.dirty">
+              <div *ngIf="formControl.cuisinename.errors" class="text-danger">
+                <div *ngIf="submitted && formControl.cuisinename.errors.required || formControl.cuisinename.errors.notOnlyWhitespace" >Cuisinename is required.</div>
+                <div *ngIf="formControl.cuisinename.errors.pattern" >Cuisine name is invalid.</div>
+              </div>
+            </div> 
+          </div>
+          <button class="btn btn-primary btn-customBlue mr-2 buttonstyle" name="add" type="submit"> Add </button>
+        </div>
+        <div id="errormsg" *ngIf="isExists" class="text-danger text-center">Cuisine already exists!!!</div>
+      <br/>
+        <div id="msg" *ngIf="message" class="text-success text-center">Cuisine added successfully!!</div>
+    </form>
+    <table class="table  table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cuisine of cuisinelist | paginate: { itemsPerPage: 5, currentPage: p };">
+                <td>{{cuisine.cuisineId}}</td>
+                <td>{{cuisine.cuisinename}}</td>
+                <td><button class="btn btn-secondary mr-2" (click)="removeCuisine(cuisine)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <div class="pagctrlstyle">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="container-fluid-sm">
+<div class="table-responsive-sm tablealign alignstyle">
+    <h3 class="textstyle">Update Food Menu</h3>
+    <div class="form-group"  style="max-width: 550px; margin-left: 480px;">
+      <input type="text" class="form-control mb-4" placeholder="Search"  id="listSearch" [(ngModel)]="keyword" (ngModelChange)="Search()">
+    </div>
+    <div *ngIf="fooditems?.length != 0" style="width: 1000px;margin-left: 250px;">
+      <table class="table table-bordered table-hover" >
+        <thead  style="background-color:lightsteelblue">
+        <tr>
+          <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr mdbTableCol *ngFor="let fooditem of fooditems | paginate: { itemsPerPage: 5, currentPage: p };" [ngSwitch]="fooditem.foodstatus">
+            <td>{{fooditem.foodId}}</td>
+            <td>{{fooditem.foodname}}</td>
+            <td>{{fooditem.cuisinename}}</td>
+            <td>{{fooditem.fddescription}}</td>
+            <td>{{fooditem.price | currency : 'INR' }}</td>
+            <td>{{fooditem.offers}}</td>
+            <td>{{fooditem.image}}</td>
+            <td>{{fooditem.foodstatus}}</td>
+            <td style="width: 200px;"><button class="btn btn-secondary mr-2" (click)="editFooditem(fooditem)">Edit</button>
+                <span *ngSwitchCase="'available'">
+                  <button class="btn btn-secondary mr-2" (click)="disableFooditem(fooditem)">Disable</button>
+                </span>
+                <span *ngSwitchCase="'NA'">
+                  <button class="btn btn-secondary mr-2" (click)="enableFooditem(fooditem)">Enable</button>
+                </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br/>
+      <div class="pagctrlstyle">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+    <br/>
+    <div class="noitemdivstyle" *ngIf="fooditems?.length == 0">
+      <h4>No food items available.</h4> 
+    </div>
+</div>
+</div>

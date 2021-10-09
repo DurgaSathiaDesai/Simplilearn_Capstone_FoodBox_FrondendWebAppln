@@ -1,0 +1,71 @@
+.noitemdivstyle
+{
+    margin-left:120px;
+}
+
+.cardbodystyle
+{
+    width :300px;
+    height:100px;
+}
+
+.imgstyle
+{
+    width:200px;
+    height: 150px;
+}
+
+.divstyle
+{
+    background-color: lightslategrey;
+    height : 30px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.link
+{
+    float : right;
+    margin-right: 40px;
+    color: whitesmoke;
+}
+
+.counterstyle
+{
+    margin-top: 50px;
+}
+
+.trashstyle
+{
+    margin-top: 0px;
+}
+
+.movestyle
+{
+    margin-top: 0px;
+    margin-left:30px;
+}
+
+
+a.orderstyle:link,a.orderstyle:visited
+{
+    
+    background-color: #3377FF;
+	color: white;
+	padding: 15px 25px;
+	text-align: center;
+    text-decoration: none;
+	border-radius: 25px;
+    margin-left : 300px;
+}
+a.orderstyle:hover, a.orderstyle:active {
+	background-color:dodgerblue;
+    font-weight: bold;
+}
+
+.moveorderdiv
+{
+    margin-left:80px;
+    font-weight: bold;
+    margin-top: 20px;
+}

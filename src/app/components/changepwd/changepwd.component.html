@@ -1,0 +1,50 @@
+<div class = "container-sm divcontainer">
+    <h2 class="head py-2  alignstyle">Change Password</h2>
+    <form [formGroup]="changepwdForm" (ngSubmit)="changepwd()">
+        <div class="form-group alignform">
+            <div class="row rowstyle">
+                <div class="col-sm-12 roundedTextBox mb-3">
+                    <input type="text" class="form-control textbox"  id="inputusername" formControlName="username" readonly>
+                </div>
+                <div class="col-sm-12 roundedTextBox mb-3">
+                    <input type="password" class="form-control textbox" id="inputoldPassword" formControlName="oldpassword" placeholder="Enter Old Password">
+                    <div *ngIf="submitted || formControl.oldpassword.touched || formControl.oldpassword.dirty">
+                        <div *ngIf="formControl.oldpassword.errors" class="text-danger">
+                            <div *ngIf="formControl.oldpassword.errors.required || formControl.oldpassword.errors.notOnlyWhitespace" >Old password is required.</div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-sm-12 roundedTextBox mb-3">
+                    <input type="password" class="form-control textbox" id="inputnewPassword" formControlName="newpassword" placeholder="Enter new Password">
+                    <div *ngIf="submitted || formControl.newpassword.touched || formControl.newpassword.dirty">
+                        <div *ngIf="formControl.newpassword.errors" class="text-danger">
+                            <div *ngIf="formControl.newpassword.errors.required || formControl.newpassword.errors.notOnlyWhitespace" >New password is required.</div>
+                            <div *ngIf="formControl.newpassword.errors.minlength" class="text-danger mt-1">
+                                Password must be have atleast 8 characters!!
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-sm-12 roundedTextBox mb-3">
+                    <input type="password" class="form-control textbox" id="inputconfirmPassword" formControlName="confirmpassword" placeholder="Enter confirm Password">
+                    <div *ngIf="submitted || formControl.confirmpassword.touched || formControl.confirmpassword.dirty">
+                        <div *ngIf="formControl.confirmpassword.errors" class="text-danger">
+                            <div *ngIf="formControl.confirmpassword.errors.required || formControl.confirmpassword.errors.notOnlyWhitespace" >Confirm password is required.</div>
+                            <div *ngIf="formControl.confirmpassword.errors.minlength" class="text-danger mt-1">
+                                Password must be have atleast 8 characters!!
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <div class="buttons text-center">
+            <button class="btn btn-secondary btn-customBlue mr-2" type="submit">Update Password</button>
+        </div>
+        <br/>
+        <div *ngIf="invalidLogin" class="text-danger text-center">Invalid Credentials !!</div>
+        <div *ngIf="pwdmismatch" class="text-danger text-center">New password and confirm password does not match!!</div>
+         <!--  <br/>
+          <div *ngIf="isSaved" class="text-success text-center">Food item added successfully!!</div> -->
+    </form>
+</div>

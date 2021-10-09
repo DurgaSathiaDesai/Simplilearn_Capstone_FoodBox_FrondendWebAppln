@@ -1,0 +1,108 @@
+<div class="divstyle">
+    <a class = "link" routerLink="/home/about">Home</a>
+  </div>
+  <br/>
+<div class="container-sm containerstyle">
+    <form [formGroup]="signupFormGroup" (ngSubmit)="register()"> 
+        <div class="form-group">
+            <h3>Register</h3>
+            <div class="row">
+                <div class="col-sm-5 roundedTextBox mb-3">
+                    <input class="form-control textboxstyle" type="text" id="inputfirstname" formControlName="firstname" placeholder="Enter Firstname"/>
+                    <div *ngIf="submitted || formControl.firstname.touched || formControl.firstname.dirty" >
+                        <div *ngIf="formControl.firstname.errors">
+                            <div *ngIf="formControl.firstname.errors.required || formControl.firstname.errors.notOnlyWhitespace" class="text-danger mt-1">
+                                First Name is required
+                            </div>
+                            <div *ngIf="formControl.firstname.errors.pattern" class="text-danger mt-1">
+                                    Name can be have only alphabets!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5 roundedTextBox mb-3">
+                    <input class="form-control textboxstyle" type="text" formControlName="lastname" placeholder="Enter Lastname"/>
+                    <div *ngIf="submitted || formControl.lastname.touched || formControl.lastname.dirty" >
+                        <div *ngIf="formControl.lastname.errors">
+                            <div *ngIf="formControl.lastname.errors.required || formControl.lastname.errors.notOnlyWhitespace" class="text-danger mt-1">
+                                Last Name is required
+                            </div>
+                            <div *ngIf="formControl.lastname.errors.pattern" class="text-danger mt-1">
+                                Name can be have only alphabets!!
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5 roundedTextBox mb-3">
+                    <input class="form-control textboxstyle" type="text" formControlName="contactno" placeholder="Enter ContactNumber"/>
+                    <div *ngIf="submitted || formControl.contactno.touched || formControl.contactno.dirty" >
+                        <div *ngIf="formControl.contactno.errors">
+                            <div *ngIf="formControl.contactno.errors.required || formControl.contactno.errors.notOnlyWhitespace" class="text-danger mt-1">
+                                ContactNumber is required.
+                            </div>
+                            <div *ngIf="formControl.contactno.errors.pattern" class="text-danger mt-1">
+                                ContactNumber can have only numbers!!
+                            </div>
+                            <div *ngIf="formControl.contactno.errors.minlength" class="text-danger mt-1">
+                                ContactNumber must be in 10 digits!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5 roundedTextBox mb-3">
+                    <input class="form-control textboxstyle" type="text" formControlName="emailId" placeholder="Enter EmailId"/>
+                    <div *ngIf="submitted || formControl.emailId.touched || formControl.emailId.dirty" >
+                        <div *ngIf="formControl.emailId.errors">
+                            <div *ngIf="formControl.emailId.errors.required || formControl.emailId.errors.notOnlyWhitespace" class="text-danger mt-1">
+                                Email Id is required
+                            </div>
+                            <div *ngIf="formControl.emailId.errors.pattern" class="text-danger mt-1">
+                                Email Id is invalid !!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 roundedTextBox mb-3">
+                    <textarea class="form-control textareastyle" formControlName="address" placeholder="Enter Address"></textarea>
+                    <div *ngIf="submitted || formControl.address.touched || formControl.address.dirty" >
+                        <div *ngIf="formControl.address.errors">
+                            <div *ngIf="formControl.address.errors.required || formControl.address.errors.notOnlyWhitespace" class="text-danger mt-1">
+                                Address is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5 roundedTextBox mb-3">
+                    <input type="text" class="form-control textbox"  id="inputusername" formControlName="username" placeholder="Enter Username">
+                    <div *ngIf="submitted || formControl.username.touched || formControl.username.dirty">
+                        <div *ngIf="formControl.username.errors" class="text-danger">
+                            <div *ngIf="formControl.username.errors.required || formControl.username.errors.notOnlyWhitespace" >Username is required.</div>
+                        </div>
+                    </div>  
+                </div>
+                <div class="col-sm-5 roundedTextBox mb-3">
+                    <input type="password" class="form-control textbox" id="inputnewPassword" formControlName="newpassword" placeholder="Enter Password">
+                    <div *ngIf="submitted || formControl.newpassword.touched || formControl.newpassword.dirty">
+                        <div *ngIf="formControl.newpassword.errors" class="text-danger">
+                            <div *ngIf="formControl.newpassword.errors.required || formControl.newpassword.errors.notOnlyWhitespace" >Password is required.</div>
+                            <div *ngIf="formControl.newpassword.errors.minlength" class="text-danger mt-1">
+                                    Password must be have atleast 8 characters!!
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <div class="text-center btnclass">
+                <button type="submit" class="btn btn-info btnstyle">Sign Up</button>
+            </div>
+            <br/>
+            <div *ngIf="signuperror" class="text-danger text-center">Some error occurred while registering,Please try again later!!</div>
+        </div>
+    </form>
+</div>

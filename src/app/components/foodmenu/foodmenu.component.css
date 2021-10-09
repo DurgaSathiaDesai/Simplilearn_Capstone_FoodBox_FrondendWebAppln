@@ -1,0 +1,115 @@
+.divstyle
+{
+    background-color: lightslategrey;
+    height : 30px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.link
+{
+    float : right;
+   
+    color: whitesmoke;
+}
+
+.loginlink
+{
+    margin-right: 20px;
+}
+
+.pipelink
+{
+    margin-right: 10px;
+}
+
+.textclass
+{
+    float:left;
+    margin-left: 20px;
+}
+
+a.cartstyle:link,a.cartstyle:visited
+{
+    float : right;
+    background-color: #3377FF;
+	color: white;
+	padding: 15px 25px;
+	text-align: center;
+    text-decoration: none;
+	border-radius: 25px;
+    margin-right: 40px;
+}
+a.cartstyle:hover, a.cartstyle:active {
+	background-color:dodgerblue;
+    font-weight: bold;
+}
+
+.aligndisplay{
+   margin-left: 80px;
+   width :800px;
+}
+.page-container{
+    
+    float : left;
+}
+
+.noitemdivstyle
+{
+    margin-left:350px;
+}
+
+
+.cardbodystyle
+{
+    width :400px;
+    height:250px;
+}
+
+.imgstyle
+{
+    width:250px;
+    height: 220px;
+}
+
+.pagctrlstyle
+{
+    margin-left:300px;
+}
+
+a.ex1:link{
+	
+    color: black;
+	
+}
+
+a.ex1:hover,a.ex1:visited {
+
+    font-weight: bold;
+}
+
+a.ex1:active
+{
+    color:darkslateblue;
+}
+
+
+.sortdisplay
+{
+    width:120px;
+    
+  
+}
+
+.movediv
+{
+ 
+    margin-left: 600px;
+   
+}
+
+.active {color:darkslateblue;font-weight:bold;}
+
+.allactive {color:darkslateblue;font-weight:bold;}
+
+

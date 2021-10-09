@@ -1,0 +1,26 @@
+.alignstyle
+{
+    margin-top: 10px;
+    margin-left: 100px;
+}
+
+.divcontainer
+{
+   margin:0 auto;
+   margin-top: 20px;
+   border:1px solid;
+   width: 500px;
+   height: 500px;
+   border-radius: 25px;
+}
+
+.alignform
+{
+    margin-top: 20px;
+}
+
+.rowstyle
+{
+    width: 350px;
+    margin-left: 50px;
+}

@@ -1,0 +1,84 @@
+<div class = "container-sm divcontainer">
+    <h2 class="head py-2  alignstyle">Add Food Item</h2>
+    <form [formGroup]="saveForm" (ngSubmit)="save()">
+        <div class="form-group alignform">
+            <div class="row rowstyle">
+                <div class="col-sm-12 roundedTextBox mb-3">
+                    <input type="text" class="form-control textbox"  id="inputfoodname" formControlName="foodname" placeholder="Enter Foodname">
+                    <div *ngIf="submitted || formControl.foodname.touched || formControl.foodname.dirty">
+                        <div *ngIf="formControl.foodname.errors" class="text-danger">
+                            <div *ngIf="formControl.foodname.errors.required || formControl.foodname.errors.notOnlyWhitespace">Foodname is required.</div>
+                            <!-- <div *ngIf="formControl.foodname.errors.pattern" >Foodname is invalid.</div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 roundedTextBox mb-3">
+                    <textarea class="form-control textareastyle" formControlName="description" placeholder="Enter Fooddescription"></textarea>
+                    <div *ngIf="submitted || formControl.description.touched || formControl.description.dirty" >
+                        <div *ngIf="formControl.description.errors">
+                            <div *ngIf="formControl.description.errors.required || formControl.description.errors.notOnlyWhitespace" class="text-danger mt-1">
+                                Food description is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 mb-3">
+                    <select class="form-control " formControlName="cuisines" >
+                        <option value="" selected>--Select a Cuisine--</option> 
+                        <option *ngFor="let cuisine of cuisinelist" value = "{{cuisine.cuisinename}}">{{cuisine.cuisinename}}</option>
+                    </select>
+                    <div *ngIf="submitted || formControl.cuisines.touched">
+                        <div *ngIf="formControl.cuisines.errors" class="text-danger">
+                            <div *ngIf="formControl.cuisines.errors.required">Cuisine is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 roundedTextBox mb-3">
+                    <input type="text" class="form-control textbox"  id="inputprice" formControlName="price" placeholder="Enter Food price">
+                    <div *ngIf="submitted || formControl.price.touched || formControl.price.dirty">
+                        <div *ngIf="formControl.price.errors" class="text-danger">
+                            <div *ngIf="formControl.price.errors.required || formControl.price.errors.notOnlyWhitespace">Food price is required.</div>
+                            <div *ngIf="formControl.price.errors.pattern">Food price is invalid.</div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-sm-6 offeralign">
+                    <select class="form-control " formControlName="offers" >
+                        <option value="" selected>--Select a Offer--</option> 
+                        <option *ngFor="let foodoffer of foodofferlist" value = "{{foodoffer.offername}}">{{foodoffer.offername}}</option>
+                    </select>
+                    <div *ngIf="submitted || formControl.offers.touched">
+                        <div *ngIf="formControl.offers.errors" class="text-danger">
+                            <div *ngIf="formControl.offers.errors.required">Food offer is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 roundedTextBox mb-3">
+                    <input type="text" class="form-control textbox"  id="inputimage" formControlName="image" placeholder="Enter Food Imagename">
+                    <div *ngIf="submitted || formControl.image.touched || formControl.image.dirty">
+                        <div *ngIf="formControl.image.errors" class="text-danger">
+                            <div *ngIf="formControl.image.errors.required || formControl.image.errors.notOnlyWhitespace">Food image is required.</div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-sm-12">
+                    <select class="form-control " formControlName="foodstatus">
+                        <option value="" selected>--Select a food status--</option> 
+                        <option value = "available">Available</option>
+                        <option value = "NA">NA</option>
+                    </select>
+                    <div *ngIf="submitted || formControl.foodstatus.touched">
+                        <div *ngIf="formControl.foodstatus.errors" class="text-danger">
+                            <div *ngIf="formControl.foodstatus.errors.required">Food status is required.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="buttons text-center">
+            <button class="btn btn-secondary btn-customBlue mr-2" type="submit">Add new FoodItem</button>
+        </div>
+        <br/>
+        <div *ngIf="isSaved" class="text-success text-center">Food item added successfully!!</div>
+    </form>
+</div>

@@ -1,0 +1,36 @@
+<div class="divstyle">
+    <a class = "link" routerLink="/home/about">Home</a></div>
+    <br/>
+  <div>
+  <div class="login-form">
+    <div class="card">
+      <h2 class="head py-2">Login</h2>
+      <form class="user-login-md" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="row">
+          <div class="col-md-12 roundedTextBox mb-3">
+            <input type="text" class="form-control textbox"  id="inputusername" formControlName="username" placeholder="Enter Username">
+            <div *ngIf="submitted || formControl.username.touched || formControl.username.dirty">
+              <div *ngIf="formControl.username.errors" class="text-danger">
+                <div *ngIf="formControl.username.errors.required || formControl.username.errors.notOnlyWhitespace" >Username is required.</div>
+              </div>
+            </div> 
+          </div>
+          <div class="col-md-12 roundedTextBox mb-3">
+            <input type="password" class="form-control textbox" id="inputPassword" formControlName="password" placeholder="Enter Password">
+            <div *ngIf="submitted || formControl.password.touched || formControl.password.dirty">
+              <div *ngIf="formControl.password.errors" class="text-danger">
+                  <div *ngIf="formControl.password.errors.required || formControl.password.errors.notOnlyWhitespace" >Password is required.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="buttons text-center">
+          <button class="btn btn-primary btn-customBlue mr-2" name = "login" type="submit">Login</button>
+        </div>
+        <br/>
+        <div id="errormsg" *ngIf="invalidLogin" class="text-danger text-center">Invalid Credentials !!</div>
+        <br/>
+        <div *ngIf="message" class="text-success text-center">Password successfully updated!!Please login using new credentials!!</div>
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,47 @@
+.textbox
+{
+  width: 300px;
+  margin-bottom: 10px;
+ 
+}
+
+.divcontainer
+{
+   margin:0 auto;
+   margin-top: 20px;
+   border:1px solid;
+   width: 500px;
+   height: 300px;
+   border-radius: 25px;
+}
+.formAlign
+{
+    margin:0 auto;
+} 
+
+.login-form {
+    /* text-align: center; */
+   /*  margin-top: 4%; */
+    padding: 60px;
+    width: 500px;
+    margin: 0 auto;
+  }
+  .card {
+    padding: 20px;
+    border: 1px solid #125266;
+  }
+
+  .divstyle
+{
+    background-color: lightslategrey;
+    height : 30px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.link
+{
+    float : right;
+    margin-right: 40px;
+    color: whitesmoke;
+}

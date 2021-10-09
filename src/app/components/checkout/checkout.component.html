@@ -1,0 +1,216 @@
+<nav class="navbar navbar-expand-sm navbar-light" style="background-color: #727e86;font-weight: bold;font-size: large;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class = "nav-link" routerLink="/home/about">Home</a></li>
+            <li class="nav-item"><a class = "nav-link" routerLink="/foodmenu">Food menu</a></li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            
+            <div *ngIf="logIn; else elseBlock">
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{user}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class = "nav-link" routerLink="" (click)="logout($event)">logout</a>
+                </div>
+              </li>
+            </div>
+          <ng-template #elseBlock>
+            <li class="nav-item"><a class="nav-link" routerLink = '/signup' routerLinkActive="active">Signup</a></li>
+            <li class="nav-item"><a class="nav-link">|</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink = '/login' routerLinkActive="active">Login</a></li>
+          </ng-template>
+        </ul>
+    </div>
+</nav>
+<br/>
+<div class="container-sm containerstyle">
+    <form [formGroup]="checkoutFormGroup" (ngSubmit)="placeOrder()"> 
+        <div class="form-group">
+            <h3>Contact Details</h3>
+            <div class="row">
+                <div class="col-sm-5 roundedTextBox mb-3">
+                    <input class="form-control textboxstyle" type="text" id="inputfirstname" formControlName="firstname" placeholder="Enter Firstname"/>
+                    <div *ngIf="submitted || formControl.firstname.touched || formControl.firstname.dirty" >
+                        <div *ngIf="formControl.firstname.errors">
+                            <div *ngIf="formControl.firstname.errors.required || formControl.firstname.errors.notOnlyWhitespace" class="text-danger mt-1">
+                                First Name is required
+                            </div>
+                            <div *ngIf="formControl.firstname.errors.pattern" class="text-danger mt-1">
+                                    Name can be have only alphabets!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5 roundedTextBox mb-3">
+                    <input class="form-control textboxstyle" type="text" formControlName="lastname" placeholder="Enter Lastname"/>
+                    <div *ngIf="submitted || formControl.lastname.touched || formControl.lastname.dirty" >
+                        <div *ngIf="formControl.lastname.errors">
+                            <div *ngIf="formControl.lastname.errors.required || formControl.lastname.errors.notOnlyWhitespace" class="text-danger mt-1">
+                                Last Name is required
+                            </div>
+                            <div *ngIf="formControl.lastname.errors.pattern" class="text-danger mt-1">
+                                Name can be have only alphabets!!
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5 roundedTextBox mb-3">
+                    <input class="form-control textboxstyle" type="text" formControlName="contactno" placeholder="Enter ContactNumber"/>
+                    <div *ngIf="submitted || formControl.contactno.touched || formControl.contactno.dirty" >
+                        <div *ngIf="formControl.contactno.errors">
+                            <div *ngIf="formControl.contactno.errors.required || formControl.contactno.errors.notOnlyWhitespace" class="text-danger mt-1">
+                                ContactNumber is required.
+                            </div>
+                            <div *ngIf="formControl.contactno.errors.pattern" class="text-danger mt-1">
+                                ContactNumber can have only numbers!!
+                            </div>
+                            <div *ngIf="formControl.contactno.errors.minlength" class="text-danger mt-1">
+                                ContactNumber must be in 10 digits!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5 roundedTextBox mb-3">
+                    <input class="form-control textboxstyle" type="text" formControlName="emailId" placeholder="Enter EmailId"/>
+                    <div *ngIf="submitted || formControl.emailId.touched || formControl.emailId.dirty" >
+                        <div *ngIf="formControl.emailId.errors">
+                            <div *ngIf="formControl.emailId.errors.required || formControl.emailId.errors.notOnlyWhitespace" class="text-danger mt-1">
+                                Email Id is required
+                            </div>
+                            <div *ngIf="formControl.emailId.errors.pattern" class="text-danger mt-1">
+                                Email Id is invalid !!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 roundedTextBox mb-3">
+                    <textarea class="form-control textareastyle" formControlName="address" placeholder="Enter Address"></textarea>
+                    <div *ngIf="submitted || formControl.address.touched || formControl.address.dirty" >
+                        <div *ngIf="formControl.address.errors">
+                            <div *ngIf="formControl.address.errors.required || formControl.address.errors.notOnlyWhitespace" class="text-danger mt-1">
+                                Address is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <label>Payment Type :</label>
+                    &nbsp;&nbsp;
+                    <input type="radio" value="CashOnDelivery" formControlName="cash" (click)="selectcash('cashOnDelivery')" [checked]="iscashchecked"/>&nbsp;
+                    <span>CashOnDelivery</span>&nbsp;&nbsp;
+                    <input type="radio" value="CreditCard"  formControlName="card" (click)="selectcard('Creditcard')" [checked]="iscardchecked"/>&nbsp;
+                    <span>Credit Card</span>
+                    <div *ngIf="paymenterror" class="text-danger mt-1">
+                        Please enter any one payment mode !!
+                    </div>
+                </div>
+            </div>
+        
+ 
+            <div *ngIf="isSelected">
+            
+                <h3>Payment Details</h3>
+                <div class="row">
+                    <div class="col-sm-4 roundedTextBox mb-3">
+                        <input class="form-control ptextboxstyle" type="text" formControlName="nameoncard" placeholder="Enter Name on Card"/>
+                        <div *ngIf="submitted || formControl.nameoncard.touched || formControl.nameoncard.dirty" >
+                            <div *ngIf="formControl.nameoncard.errors">
+                                <div *ngIf="formControl.nameoncard.errors.required || formControl.nameoncard.errors.notOnlyWhitespace" class="text-danger mt-1">
+                                    Name is required
+                                </div>
+                                <div *ngIf="formControl.nameoncard.errors.pattern" class="text-danger mt-1">
+                                        Name can be have only alphabets!!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 roundedTextBox mb-3">
+                        <input class="form-control ptextboxstyle" type="text" formControlName="cardnumber" placeholder="Enter Card Number"/>
+                        <div *ngIf="submitted || formControl.cardnumber.touched || formControl.cardnumber.dirty" >
+                            <div *ngIf="formControl.cardnumber.errors">
+                                <div *ngIf="formControl.cardnumber.errors.required || formControl.cardnumber.errors.notOnlyWhitespace" class="text-danger mt-1">
+                                    Card number is required
+                                </div>
+                                <div *ngIf="formControl.cardnumber.errors.pattern" class="text-danger mt-1">
+                                    Card number must be in 16 digits.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 roundedTextBox mb-3">
+                        <input class="form-control cvvstyle" type="text" formControlName="cvv" placeholder="Enter cvv"/>
+                        <div *ngIf="submitted || formControl.cvv.touched || formControl.cvv.dirty" >
+                            <div *ngIf="formControl.cvv.errors">
+                                <div *ngIf="formControl.cvv.errors.required || formControl.cvv.errors.notOnlyWhitespace" class="text-danger mt-1">
+                                    CVV is required
+                                </div>
+                                <div *ngIf="formControl.cvv.errors.pattern" class="text-danger mt-1">
+                                    CVV must be in 3 digits.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5 roundedTextBox mb-3">
+                        <select class="form-control" formControlName="expYear" (change)="handleMonthsAndYears()">
+                            <option value="" selected>--Select card expiry year--</option> 
+                            <option *ngFor="let year of creditCardYears">
+                                {{ year }}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted || formControl.expYear.touched || formControl.expYear.dirty" >
+                            <div *ngIf="formControl.expYear.errors">
+                                <div *ngIf="formControl.expYear.errors.required" class="text-danger mt-1">
+                                    Card expiry year is required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 roundedTextBox mb-3">
+                        <select class="form-control" formControlName="expMonth">
+                            <option value="" selected>--Select card expiry month--</option> 
+                            <option *ngFor="let month of creditCardMonths">
+                                {{ month }}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted || formControl.expMonth.touched || formControl.expMonth.dirty" >
+                            <div *ngIf="formControl.expMonth.errors">
+                                <div *ngIf="formControl.expMonth.errors.required" class="text-danger mt-1">
+                                    Card expiry month is required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            <div class="row form-area">
+                <div class="col-sm-12">
+                <h3>Review Your Order</h3>
+                <p>Total Quantity: {{ totalQuantity }}</p>
+                <p>Shipping: FREE</p>
+                <p>Total Price: {{ totalPrice | currency: 'INR' }} </p> 
+            </div>
+            </div>
+
+             <!-- submit button-->
+            <div class="text-center">
+                <button type="submit" class="btn btn-info">Order Now</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+

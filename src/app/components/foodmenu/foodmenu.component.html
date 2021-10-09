@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand-sm navbar-light" style="background-color: #727e86;font-weight: bold;font-size: large;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class = "nav-link" routerLink="/home/about">Home</a></li>
+            <div *ngIf="logIn; else elseBlock">
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{user}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class = "nav-link" routerLink="" (click)="logout($event)">logout</a>
+                </div>
+              </li>
+            </div>
+          <ng-template #elseBlock>
+            <li class="nav-item"><a class="nav-link" routerLink = '/signup' routerLinkActive="active">Signup</a></li>
+            <li class="nav-item"><a class="nav-link">|</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink = '/login' routerLinkActive="active">Login</a></li>
+          </ng-template>
+        </ul>
+    </div>
+</nav>
+<br>
+<div>
+    <a id="cart" class="cartstyle" routerLink="/cartdetails">
+        <span><i class="fas fa-shopping-cart"></i>&nbsp;View Cart</span><br/>
+        <span>{{ totalQuantity }} item</span>&nbsp; 
+        <span>|</span>&nbsp; 
+        <span>Total : {{ totalPrice | currency: 'INR' }}</span> 
+    </a>  
+</div>
+
+    <div class="card page-container" style="width: 14rem;">
+        <div class="card-header">
+           Categories
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let tempCuisine of cuisinelist;let i = index">&nbsp;
+            <a class="ex1" (click)="get(i,tempCuisine);" [ngClass]="{active: isActive(i)}" style="font-size:medium;">
+                {{ tempCuisine.cuisinename }}
+            </a>
+            
+          </li>
+        </ul>
+        
+    </div>
+    <div class="page-container aligndisplay">
+      <div class="form-group"  style="width: 550px; margin-left: 200px;">
+        <input type="text" class="form-control mb-4" placeholder="Search"  id="listSearch" [(ngModel)]="keyword" (ngModelChange)="Search()">
+      </div>
+     
+      <div class= "row movediv" *ngIf="fooditems?.length != 0">
+      <label for= "sort" style="font-weight: bold;">Sort By: </label>&nbsp;&nbsp;&nbsp;
+      <span><select id = "sort" name = "" class="form-control  sortdisplay mb-3" [(ngModel)]="sorttype" (ngModelChange)="changesort()" >
+       <!--  <option value = "nameasc" selected>name:A-Z</option>
+        <option value = "namedesc">name:Z-A</option> -->
+        <option value = "priceasc">price:L-H</option>
+        <option value = "pricedesc">price:H-L</option>
+        
+    </select>
+      </span>
+  </div>
+
+     
+      <div class="card mb-1 aligndisplay" style="max-width: 800px;" *ngFor="let fooditem of fooditems |orderBy : 'price' : sortval | paginate: { itemsPerPage: 3, currentPage: p };">
+        <div class="row no-gutters">
+        <div class="col-sm-5">
+            <img class="card-img imgstyle" src="{{ './assets/images/' + fooditem.image }}" alt="{{fooditem.foodname}}">
+        </div>
+        <div class="col-sm-7">
+          <div class="card-body cardbodystyle">
+            <h5 class="card-title">{{fooditem.foodname}}</h5>
+            <p class="card-text">{{fooditem.price | currency : 'INR'}}</p>
+            <p class="card-text">{{fooditem.offers}}</p>
+            <p class="card-text">{{fooditem.fddescription}}</p>
+            <button (click)="addToCart(fooditem)" class="btn btn-primary btn-sm">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="noitemdivstyle" *ngIf="fooditems?.length == 0">
+      <h4>No food items available.</h4> 
+    </div>
+    <br/>
+    <div class="pagctrlstyle" *ngIf="fooditems?.length != 0">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+  
+    </div>
+    
+
+

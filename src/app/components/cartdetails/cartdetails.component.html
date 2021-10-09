@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-sm navbar-light" style="background-color: #727e86;font-weight: bold;font-size: large;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class = "nav-link" routerLink="/home/about">Home</a></li>
+            <li class="nav-item"><a class = "nav-link" routerLink="/foodmenu">Food menu</a></li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            
+            <div *ngIf="logIn; else elseBlock">
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{user}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class = "nav-link" routerLink="" (click)="logout($event)">logout</a>
+                </div>
+              </li>
+            </div>
+          <ng-template #elseBlock>
+            <li class="nav-item"><a class="nav-link" routerLink = '/signup' routerLinkActive="active">Signup</a></li>
+            <li class="nav-item"><a class="nav-link">|</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink = '/login' routerLinkActive="active">Login</a></li>
+          </ng-template>
+        </ul>
+    </div>
+</nav>
+<br/>
+<div class="container-sm">
+    <div *ngIf="cartItems?.length != 0">
+    <h3>Your Cart Items</h3>
+  </div>
+    <div class="card mb-1" style="max-width: 800px;" *ngFor="let cartitem of cartItems">
+     
+      <div class="row no-gutters">
+         
+        <div class="col-sm-4">
+          <img class="card-img imgstyle" src="{{ './assets/images/' + cartitem.imageUrl }}" alt="{{cartitem.name}}">
+        </div>
+  
+        <div class="col-sm-5">
+          <div class="card-body cardbodystyle">
+            <h5 class="card-title">{{cartitem.name}}</h5>
+            <p class="card-text">{{cartitem.unitPrice | currency : 'INR'}}</p>
+            <p class="card-text">{{cartitem.offers}}</p>
+          </div>
+        </div>
+  
+        <div class="col-sm-2 counterstyle">
+          <button (click)="incrementQuantity(cartitem)" class="btn btn-primary btn-sm">
+            <i class="fas fa-plus"></i>
+          </button>&nbsp;&nbsp;  
+          <span>{{ cartitem.quantity }}</span>&nbsp;&nbsp;  
+          <button (click)="decrementQuantity(cartitem)" class="btn btn-primary btn-sm">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+  
+        <div class="col-sm-1">
+          <button class = "trashstyle" (click)="remove(cartitem)" class="btn btn-lg"><i class="fas fa-trash-alt movestyle"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class = "moveorderdiv" style="max-width: 400px;" *ngIf="cartItems?.length != 0">
+      <p>Total Items: {{ totalQuantity }}</p>
+      <p>Total Price: {{ totalPrice | currency: 'INR' }}</p>
+    </div>
+    <div *ngIf="cartItems?.length != 0">
+      <a class = "orderstyle" routerLink="" (click)="check()">CheckOut</a>
+    </div>
+    <div class="noitemdivstyle" *ngIf="cartItems?.length == 0">
+      <h4>Your cart is empty !!</h4> 
+    </div>
+  </div>

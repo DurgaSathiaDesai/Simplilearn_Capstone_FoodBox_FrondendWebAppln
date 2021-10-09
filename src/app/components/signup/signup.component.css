@@ -1,0 +1,48 @@
+.containerstyle
+{
+    width:800px;
+}
+
+.textboxstyle
+{
+    width: 300px;
+}
+
+.textareastyle
+{
+    width: 635px;
+    height:100px;
+ 
+}
+
+.ptextboxstyle
+{
+    width: 250px;
+}
+
+
+.divstyle
+{
+    background-color: lightslategrey;
+    height : 30px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.link
+{
+    float : right;
+    margin-right: 40px;
+    color: whitesmoke;
+}
+
+.btnclass
+{
+    margin-right: 120px;
+    
+}
+.btnstyle
+{
+    width:200px;
+    font-weight: bold;
+}

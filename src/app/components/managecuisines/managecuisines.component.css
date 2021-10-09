@@ -1,0 +1,43 @@
+table.table-bordered{
+    border:1px solid darkslategrey;
+    margin-top:20px;
+  }
+table.table-bordered > thead > tr > th{
+    border:1px solid darkslategrey;
+}
+table.table-bordered > tbody > tr > td{
+    border:1px solid darkslategrey;
+}
+
+table .thead-light th 
+{
+    color:black;
+    background-color: lightsteelblue;
+}
+
+.divstyle
+{
+    width : 500px;
+    margin:0 auto;
+}
+
+.textstyle
+{
+    margin-left: 100px;
+}
+
+.pagctrlstyle
+{
+    margin-left:100px;
+}
+
+.buttonstyle
+{
+    width:70px;
+    height: 38px;
+}
+
+.textboxclass
+{
+    margin-left: 80px;
+}

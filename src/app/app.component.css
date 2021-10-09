@@ -1,0 +1,39 @@
+.imgclass
+{
+    float :left;
+    margin-top: 0px;
+    height: 60px;
+    padding-top: 0px;
+}
+
+.jumbotron-image 
+{
+    background-color:rgb(205, 224, 224);
+    background-repeat:no-repeat;
+    background-size: cover;
+    height:140px;
+}
+
+.containerclass
+{
+  height: 10px;
+}
+
+@media screen and (min-width: 601px) {
+    .resp {
+      font-size: 80px;
+     font-style:italic;
+      font-family:'Courier New', Courier, monospace;
+  font-weight: bold;
+      margin-left: 130px;
+      color:black;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .resp {
+      font-size: 30px;
+      font-style: italic;
+      font-family:cursive;
+    }
+}

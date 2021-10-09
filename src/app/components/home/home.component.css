@@ -1,0 +1,29 @@
+
+a.menulinkbutton:link,a.menulinkbutton:visited
+{
+    background-color: #3377FF;
+	color: white;
+	padding: 15px 25px;
+	text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	border-radius: 25px;
+    margin-left:700px;
+}
+a.menulinkbutton:hover, a.menulinkbutton:active {
+	background-color:dodgerblue;
+    font-weight: bold;
+}
+
+.spanclass
+{
+    margin-top: 30px;
+}
+
+.divclass
+{
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 400px;
+}
