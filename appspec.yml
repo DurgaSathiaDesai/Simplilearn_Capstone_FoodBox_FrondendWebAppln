@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+files:
+  - source: ./dist
+    destination: /home/ec2-user
+  - source: ./scripts
+    destination: /home/ec2-user
+file_exists_behavior: OVERWRITE
+
+hooks:
+  AfterInstall:
+    - location: scripts/start_nginx.sh
+      timeout: 180
+      runas: root
+
