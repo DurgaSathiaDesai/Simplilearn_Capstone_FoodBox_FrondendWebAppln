@@ -8,7 +8,7 @@ import { Cuisines } from '../classes/cuisines';
 })
 export class CuisineService {
 
-  private baseUrl : string = 'http://3.82.162.71:8080/api/';
+  private baseUrl : string = 'http://3.82.162.71:8080/foodboxWebApplication/api/';
   constructor(private http : HttpClient) { }
 
   getAllCuisines():Observable<Cuisines[]>

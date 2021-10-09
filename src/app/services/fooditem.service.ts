@@ -13,7 +13,7 @@ export class FooditemService
 
   public foodId : number | any;
 
-  private baseUrl : string = 'http://3.82.162.71:8080/api/';
+  private baseUrl : string = 'http://3.82.162.71:8080/foodboxWebApplication/api/';
   constructor(private http : HttpClient) 
   { 
 

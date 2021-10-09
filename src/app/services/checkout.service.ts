@@ -8,7 +8,7 @@ import { Purchase } from '../classes/purchase';
 })
 export class CheckoutService {
 
-  private purchaseUrl = 'http://3.82.162.71:8080/api/purchase';
+  private purchaseUrl = 'http://3.82.162.71:8080/foodboxWebApplication/api/purchase';
 
   orderTrackingNo : string = "";
   constructor(private httpClient: HttpClient) 
