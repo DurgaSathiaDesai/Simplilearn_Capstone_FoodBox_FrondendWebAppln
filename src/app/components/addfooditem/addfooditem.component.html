@@ -7,13 +7,13 @@
                     <input type="text" class="form-control textbox"  id="inputfoodname" formControlName="foodname" placeholder="Enter Foodname">
                     <div *ngIf="submitted || formControl.foodname.touched || formControl.foodname.dirty">
                         <div *ngIf="formControl.foodname.errors" class="text-danger">
-                            <div *ngIf="formControl.foodname.errors.required || formControl.foodname.errors.notOnlyWhitespace">Foodname is required.</div>
+                            <div name="nameerr" *ngIf="formControl.foodname.errors.required || formControl.foodname.errors.notOnlyWhitespace">Foodname is required.</div>
                             <!-- <div *ngIf="formControl.foodname.errors.pattern" >Foodname is invalid.</div> -->
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12 roundedTextBox mb-3">
-                    <textarea class="form-control textareastyle" formControlName="description" placeholder="Enter Fooddescription"></textarea>
+                    <textarea class="form-control textareastyle" id="desc" formControlName="description" placeholder="Enter Fooddescription"></textarea>
                     <div *ngIf="submitted || formControl.description.touched || formControl.description.dirty" >
                         <div *ngIf="formControl.description.errors">
                             <div *ngIf="formControl.description.errors.required || formControl.description.errors.notOnlyWhitespace" class="text-danger mt-1">
@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="col-sm-12 mb-3">
-                    <select class="form-control " formControlName="cuisines" >
+                    <select class="form-control" name="cuisines" formControlName="cuisines" >
                         <option value="" selected>--Select a Cuisine--</option> 
                         <option *ngFor="let cuisine of cuisinelist" value = "{{cuisine.cuisinename}}">{{cuisine.cuisinename}}</option>
                     </select>
@@ -38,12 +38,12 @@
                     <div *ngIf="submitted || formControl.price.touched || formControl.price.dirty">
                         <div *ngIf="formControl.price.errors" class="text-danger">
                             <div *ngIf="formControl.price.errors.required || formControl.price.errors.notOnlyWhitespace">Food price is required.</div>
-                            <div *ngIf="formControl.price.errors.pattern">Food price is invalid.</div>
+                            <div name="priceerr" *ngIf="formControl.price.errors.pattern">Food price is invalid.</div>
                         </div>
                     </div> 
                 </div>
                 <div class="col-sm-6 offeralign">
-                    <select class="form-control " formControlName="offers" >
+                    <select class="form-control" name="offers" formControlName="offers" >
                         <option value="" selected>--Select a Offer--</option> 
                         <option *ngFor="let foodoffer of foodofferlist" value = "{{foodoffer.offername}}">{{foodoffer.offername}}</option>
                     </select>
@@ -62,7 +62,7 @@
                     </div> 
                 </div>
                 <div class="col-sm-12">
-                    <select class="form-control " formControlName="foodstatus">
+                    <select class="form-control" name="status" formControlName="foodstatus">
                         <option value="" selected>--Select a food status--</option> 
                         <option value = "available">Available</option>
                         <option value = "NA">NA</option>
@@ -76,7 +76,7 @@
             </div>
         </div>
         <div class="buttons text-center">
-            <button class="btn btn-secondary btn-customBlue mr-2" type="submit">Add new FoodItem</button>
+            <button name="add" class="btn btn-secondary btn-customBlue mr-2" type="submit">Add new FoodItem</button>
         </div>
         <br/>
         <div *ngIf="isSaved" class="text-success text-center">Food item added successfully!!</div>

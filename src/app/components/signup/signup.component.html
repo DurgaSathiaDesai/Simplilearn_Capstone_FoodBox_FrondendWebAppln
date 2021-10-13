@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="col-sm-5 roundedTextBox mb-3">
-                    <input class="form-control textboxstyle" type="text" formControlName="lastname" placeholder="Enter Lastname"/>
+                    <input class="form-control textboxstyle" type="text" id="lastname" formControlName="lastname" placeholder="Enter Lastname"/>
                     <div *ngIf="submitted || formControl.lastname.touched || formControl.lastname.dirty" >
                         <div *ngIf="formControl.lastname.errors">
                             <div *ngIf="formControl.lastname.errors.required || formControl.lastname.errors.notOnlyWhitespace" class="text-danger mt-1">
@@ -36,7 +36,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-5 roundedTextBox mb-3">
-                    <input class="form-control textboxstyle" type="text" formControlName="contactno" placeholder="Enter ContactNumber"/>
+                    <input class="form-control textboxstyle" type="text" id="contactnumber" formControlName="contactno" placeholder="Enter ContactNumber"/>
                     <div *ngIf="submitted || formControl.contactno.touched || formControl.contactno.dirty" >
                         <div *ngIf="formControl.contactno.errors">
                             <div *ngIf="formControl.contactno.errors.required || formControl.contactno.errors.notOnlyWhitespace" class="text-danger mt-1">
@@ -45,14 +45,14 @@
                             <div *ngIf="formControl.contactno.errors.pattern" class="text-danger mt-1">
                                 ContactNumber can have only numbers!!
                             </div>
-                            <div *ngIf="formControl.contactno.errors.minlength" class="text-danger mt-1">
+                            <div name="contacterr" *ngIf="formControl.contactno.errors.minlength" class="text-danger mt-1">
                                 ContactNumber must be in 10 digits!!
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-5 roundedTextBox mb-3">
-                    <input class="form-control textboxstyle" type="text" formControlName="emailId" placeholder="Enter EmailId"/>
+                    <input class="form-control textboxstyle" type="text" id="email" formControlName="emailId" placeholder="Enter EmailId"/>
                     <div *ngIf="submitted || formControl.emailId.touched || formControl.emailId.dirty" >
                         <div *ngIf="formControl.emailId.errors">
                             <div *ngIf="formControl.emailId.errors.required || formControl.emailId.errors.notOnlyWhitespace" class="text-danger mt-1">
@@ -67,10 +67,10 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 roundedTextBox mb-3">
-                    <textarea class="form-control textareastyle" formControlName="address" placeholder="Enter Address"></textarea>
+                    <textarea class="form-control textareastyle" id="address" formControlName="address" placeholder="Enter Address"></textarea>
                     <div *ngIf="submitted || formControl.address.touched || formControl.address.dirty" >
                         <div *ngIf="formControl.address.errors">
-                            <div *ngIf="formControl.address.errors.required || formControl.address.errors.notOnlyWhitespace" class="text-danger mt-1">
+                            <div name="addrerror" *ngIf="formControl.address.errors.required || formControl.address.errors.notOnlyWhitespace" class="text-danger mt-1">
                                 Address is required.
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                 </div>
             </div>
             <div class="text-center btnclass">
-                <button type="submit" class="btn btn-info btnstyle">Sign Up</button>
+                <button type="submit" name="signup" class="btn btn-info btnstyle">Sign Up</button>
             </div>
             <br/>
             <div *ngIf="signuperror" class="text-danger text-center">Some error occurred while registering,Please try again later!!</div>

@@ -49,11 +49,11 @@
         </div>
   
         <div class="col-sm-2 counterstyle">
-          <button (click)="incrementQuantity(cartitem)" class="btn btn-primary btn-sm">
+          <button name="incrQty" (click)="incrementQuantity(cartitem)" class="btn btn-primary btn-sm">
             <i class="fas fa-plus"></i>
           </button>&nbsp;&nbsp;  
-          <span>{{ cartitem.quantity }}</span>&nbsp;&nbsp;  
-          <button (click)="decrementQuantity(cartitem)" class="btn btn-primary btn-sm">
+          <span name="Qty">{{ cartitem.quantity }}</span>&nbsp;&nbsp;  
+          <button name="decrQty" (click)="decrementQuantity(cartitem)" class="btn btn-primary btn-sm">
             <i class="fas fa-minus"></i>
           </button>
         </div>
@@ -68,7 +68,7 @@
       <p>Total Price: {{ totalPrice | currency: 'INR' }}</p>
     </div>
     <div *ngIf="cartItems?.length != 0">
-      <a class = "orderstyle" routerLink="" (click)="check()">CheckOut</a>
+      <a name="checkout" class = "orderstyle" routerLink="" (click)="check()">CheckOut</a>
     </div>
     <div class="noitemdivstyle" *ngIf="cartItems?.length == 0">
       <h4>Your cart is empty !!</h4> 

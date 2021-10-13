@@ -21,12 +21,12 @@
             <td>{{fooditem.offers}}</td>
             <td>{{fooditem.image}}</td>
             <td>{{fooditem.foodstatus}}</td>
-            <td style="width: 200px;"><button class="btn btn-secondary mr-2" (click)="editFooditem(fooditem)">Edit</button>
+            <td style="width: 200px;"><button id="editfood" class="btn btn-secondary mr-2" (click)="editFooditem(fooditem)">Edit</button>
                 <span *ngSwitchCase="'available'">
-                  <button class="btn btn-secondary mr-2" (click)="disableFooditem(fooditem)">Disable</button>
+                  <button name="disable" class="btn btn-secondary mr-2" (click)="disableFooditem(fooditem)">Disable</button>
                 </span>
                 <span *ngSwitchCase="'NA'">
-                  <button class="btn btn-secondary mr-2" (click)="enableFooditem(fooditem)">Enable</button>
+                  <button name="enable" class="btn btn-secondary mr-2" (click)="enableFooditem(fooditem)">Enable</button>
                 </span>
             </td>
           </tr>

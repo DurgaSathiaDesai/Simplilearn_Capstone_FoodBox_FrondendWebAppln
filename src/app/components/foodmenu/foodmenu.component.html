@@ -39,7 +39,7 @@
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item" *ngFor="let tempCuisine of cuisinelist;let i = index">&nbsp;
-            <a class="ex1" (click)="get(i,tempCuisine);" [ngClass]="{active: isActive(i)}" style="font-size:medium;">
+            <a id="{{ tempCuisine.cuisinename }}" class="ex1" (click)="get(i,tempCuisine);" [ngClass]="{active: isActive(i)}" style="font-size:medium;">
                 {{ tempCuisine.cuisinename }}
             </a>
             
@@ -76,7 +76,7 @@
             <p class="card-text">{{fooditem.price | currency : 'INR'}}</p>
             <p class="card-text">{{fooditem.offers}}</p>
             <p class="card-text">{{fooditem.fddescription}}</p>
-            <button (click)="addToCart(fooditem)" class="btn btn-primary btn-sm">Add to cart</button>
+            <button name="addFoodToCart" (click)="addToCart(fooditem)" class="btn btn-primary btn-sm">Add to cart</button>
           </div>
         </div>
       </div>
