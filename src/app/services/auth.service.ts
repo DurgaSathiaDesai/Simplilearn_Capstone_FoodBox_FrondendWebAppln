@@ -9,7 +9,7 @@ import { IloginCredentials } from '../interfaces/ilogin-credentials';
 })
 export class AuthService 
 {
-  private baseUrl : string = 'http://localhost:8080/api/';
+  private baseUrl : string = 'http://52.91.95.27:8080/foodboxWebApplication/api/';
 
   constructor(private http : HttpClient) 
   { 
